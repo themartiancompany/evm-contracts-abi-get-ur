@@ -1,7 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0
 
-# SPDX-License-Identifier: AGPL-3.0
-
 #    ----------------------------------------------------------------------
 #    Copyright © 2024, 2025  Pellegrino Prevete
 #
@@ -21,10 +19,13 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+# Maintainers:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+#   Pellegrino Prevete (dvorak)
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 _os="$( \
   uname \
@@ -40,6 +41,11 @@ if [[ ! -v "_evmfs" ]]; then
   elif [[ "${_evmfs_available}" == "" ]]; then
     _evmfs="false"
   fi
+fi
+if [[ "${_os}" == "Android" ]]; then
+  _compiler="clang"
+elif [[ "${_os}" == "GNU/Linux" ]]; then
+  _compiler="gcc"
 fi
 _offline="false"
 _git="false"
@@ -81,6 +87,8 @@ license=(
   "AGPL3"
 )
 depends=(
+  # not sure
+  # "${_clibs}"
   "${_py}>=${_pymajver}"
   "${_py}<${_pynextver}"
   "${_py}-eip3091>=${_eip3091_ver}"
@@ -96,6 +104,7 @@ optdepends=(
   )
 makedepends=(
   "cython"
+  "${_compiler}"
   "${_py}-setuptools"
 )
 checkdepends=(
