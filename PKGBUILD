@@ -65,7 +65,7 @@ pkgname="${_pkg}"
 pkgver="0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
 _eip3091_ver="0.9.6.1"
 _commit="a88f5617538e3b070923c1c9d4d8621b21e77068"
-pkgrel=1
+pkgrel=2
 _pkgdesc=(
   "Returns ABI of a smart contract on an EVM network."
 )
